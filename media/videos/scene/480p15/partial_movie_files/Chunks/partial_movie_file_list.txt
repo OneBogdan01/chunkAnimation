@@ -1,0 +1,11 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/1185818338_3379040062_859393058.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_3552213694_3053988671.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_109591518_392927775.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_4278518235_3372662199.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_3744297091_412441390.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_4119312677_3946291376.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_3846036757_893358304.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_102624854_625346021.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_1906393127_3126532630.mp4'
+file 'file:C:/Users/bogda/Videos/chunkAnimation/media/videos/scene/480p15/partial_movie_files/Chunks/624642324_3891115972_590166037.mp4'
