@@ -57,7 +57,7 @@ class Chunks(Scene):
         num_cols = 4
         square_size = 1
         spacing = 0
-        
+        ofsetX = 4
          # Create array of squares and corresponding text
         activeChunks = VGroup()
         for i in range(num_rows):
@@ -65,7 +65,7 @@ class Chunks(Scene):
                 square = Square(side_length=square_size, fill_color=BLUE, fill_opacity=0.7)
                 square.move_to(
                     square_size * (i - (num_rows - 1) / 2) * UP +
-                    square_size * (j - (num_cols - 1) / 2) * RIGHT +
+                    square_size * (ofsetX+j - (num_cols - 1) / 2) * RIGHT +
                     spacing * i * UP +
                     spacing * j * RIGHT
                 )
@@ -106,9 +106,11 @@ class Chunks(Scene):
 
         for i in range(5):
             self.play(activeChunks.animate.shift(LEFT*square_size), run_time=1)
-            animations = []
+            goToRightAnim = []
+            switchAnim = []
+            inactiveAnim = []
             for chunk in activeChunks:
-                if chunk.get_center()[0] < -self.camera.frame_width / 2:
+                if chunk.get_center()[0] < -self.camera.frame_width / 2+ofsetX:
                     # Select a random inactive chunk
                     inactive_chunk = random.choice(inactiveChunks)
 
@@ -142,17 +144,33 @@ class Chunks(Scene):
                     inactive_chunk_square.set_fill(chunk_color, opacity=chunk_opacity)
 
                     # Move the inactive chunk to the position of the offscreen chunk
-                    aux = inactive_chunk.get_center()
-                    inactive_chunk.move_to(chunk.get_center())
-                    chunk.move_to(aux)
+                    aux = chunk.get_center()
+                    #inactive_chunk.move_to(chunk.get_center())
+                    animation = chunk.animate.move_to(inactive_chunk.get_center())
+                    switchAnim.append(animation)
+
+                    animation = inactive_chunk.animate.move_to(aux)
+                    switchAnim.append(animation)
+                    self.play(*switchAnim, run_time=.5)
 
                     # Animate the inactive chunk moving to the right
-                    animations.append(inactive_chunk.animate.shift(RIGHT * square_size*num_rows*num_cols))
+                    animation = inactive_chunk.animate.shift(RIGHT * square_size*num_rows*num_cols)
+                    switchAnim.append(animation)
+                    self.play(animation, run_time=.5)
+
                     inactiveChunks.remove(inactive_chunk)
                     activeChunks.remove(chunk)
 
                     # Add the offscreen chunk to the list of inactive chunks
                     inactiveChunks.add(chunk)
                     activeChunks.add(inactive_chunk)
-            if(len(animations) > 0):
-                self.play(*animations, run_time=.5)
+            
+            # if(len(switchAnim) > 0):
+            #     self.(*switchAnim, run_time=.5)
+                
+
+            # if(len(inactiveAnim) > 0):
+            #     self.play(*inactiveAnim, run_time=.5)
+            # if(len(goToRightAnim) > 0):
+            #     self.play(*goToRightAnim, run_time=.5)
+           
